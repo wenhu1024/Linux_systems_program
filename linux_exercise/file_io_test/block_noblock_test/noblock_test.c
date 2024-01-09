@@ -41,6 +41,8 @@ int main(){
     }else{
         write(STDOUT_FILENO,buff,n);
     }
+
+    close(fd);
     return 0;
 }
 

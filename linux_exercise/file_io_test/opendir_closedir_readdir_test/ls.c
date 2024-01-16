@@ -15,7 +15,7 @@ int main(int argc,char* argv[]){
     struct dirent *sdp;
 
     while((sdp=readdir(dir))!=NULL){
-        if(sdp->d_name[0]=='.'){
+        if(strcmp(sdp->d_name,".")==0 || strcmp(sdp->d_name,"..")==0){
             continue;
         }
         printf("%s\t",sdp->d_name);

@@ -22,7 +22,6 @@ int main()
     struct sigaction act,oldact;
     act.sa_handler=func;
     sigemptyset(&(act.sa_mask));
-    act.sa_flags=0;
 
     int ret;
     ret=sigaction(SIGINT,&act,&oldact);

@@ -28,7 +28,7 @@ int main()
     fd = open("test", O_RDWR);
     if (fd == -1)
     {
-        sys_err("open");
+        sys_err("open"); 
     }
 
     p = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);

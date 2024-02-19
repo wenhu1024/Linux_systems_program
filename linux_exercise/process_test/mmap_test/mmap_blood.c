@@ -40,8 +40,12 @@ int main(){
     }else{
         sleep(1);
         printf("parent: *p=%d  var=%d\n",*p,var);
+        wait(NULL);
     }
 
-
+    ret=munmap(p,len);
+    if(ret==-1){
+        sys_err("munmap");
+    }
     return 0;
 }

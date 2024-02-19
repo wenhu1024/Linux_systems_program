@@ -12,10 +12,9 @@ int main(int argc,char *argv[]){
         perror("fork");
         exit(1);
     }else if(pid==0){
-         char *new_argv[4] = {"ls", "-l", "-h", NULL};
-         new_argv[0]="123";
+        char *new_argv[4] = {"ls", "-l", "-h", NULL};
         execvp("ls",new_argv);
-        perror("execlp");
+        perror("execvp");
         exit(1);
     }else if(pid>0){
         printf("parent pid:%d\n",getpid());

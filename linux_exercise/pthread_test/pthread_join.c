@@ -36,5 +36,6 @@ int main(){
     }
 
     printf("%d      %s\n",pt->n,pt->str);
+    free(pt);
     pthread_exit((void*)0);
 }

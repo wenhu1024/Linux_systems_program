@@ -11,10 +11,7 @@ void *fcn(void *arg){
     pthread_exit(NULL);
 }
 
-void sys_err(const char* str){
-    perror(str);
-    exit(1);
-}
+
 
 int main(){
     int ret,i;
@@ -24,14 +21,16 @@ int main(){
     for(i=0;i<5;++i){
         ret=pthread_create(&(tid[i]),NULL,fcn,(void*)i);
         if(ret!=0){
-            sys_err("pthread_create");
+            fprintf(stderr,"pthread_create errno: %s\n",strerror(ret));
+            exit(1);
         }
     }
 
     for(i=0;i<5;++i){
         ret=pthread_join(tid[i],(void**)&pi);
         if(ret!=0){
-            sys_err("pthread_join");
+            fprintf(stderr,"pthread_join errno : %s\n",strerror(ret));
+            exit(0);
         }        
         printf("%d thread finished\n",i+1);
     }

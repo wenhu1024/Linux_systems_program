@@ -15,10 +15,7 @@ void *fcn(void *arg){
     pthread_exit((void*)t);
 }
 
-void sys_err(const char* str){
-    perror(str);
-    exit(1);
-}
+
 
 int main(){
     int ret;
@@ -27,12 +24,14 @@ int main(){
 
     ret=pthread_create(&tid,NULL,fcn,NULL);
     if(ret!=0){
-        sys_err("pthread_create");
+        fprintf(stderr,"pthread_create errno : %s\n",strerror(ret));
+        exit(1);
     }
 
     ret=pthread_join(tid,(void**)&pt);
     if(ret!=0){
-        sys_err("pthread_join");
+        fprintf(stderr,"pthread_join errno : %s\n",strerror(ret));
+        exit(1);
     }
 
     printf("%d      %s\n",pt->n,pt->str);

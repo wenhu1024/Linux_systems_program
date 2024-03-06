@@ -36,5 +36,7 @@ int main(){
         }
         write(cfd,buf,ret);        
     }
+    close(cfd);
+    close(lfd);
     return 0;
 }

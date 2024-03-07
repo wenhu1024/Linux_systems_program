@@ -21,6 +21,7 @@ int main(){
     while(1){
         write(cfd,"hello\n",6);
         ret=read(cfd,buf,BUFSIZ);
+        if(ret==0){break;}
         write(STDOUT_FILENO,buf,ret);
         sleep(1);
     }

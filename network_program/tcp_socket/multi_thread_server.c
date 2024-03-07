@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-#define SERV_PORT 8000
+#define SERV_PORT 9527
 
 struct s_info{
     struct sockaddr_in c_add;

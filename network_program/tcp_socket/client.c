@@ -4,7 +4,7 @@
 #include <arpa/inet.h>
 
 #define SER_PORT 9527
-int cnt=10;
+
 
 int main(){
     int cfd,ret;
@@ -18,7 +18,7 @@ int main(){
     cfd=socket(AF_INET,SOCK_STREAM,0);
     connect(cfd,(struct sockaddr*)&s_add,sizeof(s_add));
 
-    while(--cnt){
+    while(1){
         write(cfd,"hello\n",6);
         ret=read(cfd,buf,BUFSIZ);
         write(STDOUT_FILENO,buf,ret);

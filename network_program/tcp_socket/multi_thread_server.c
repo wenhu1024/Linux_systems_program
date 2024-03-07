@@ -23,6 +23,7 @@ void *do_work(void *arg){
         ret=read(info->cfd,buf,BUFSIZ);
         if (ret == 0) {
             printf("the client %d closed...\n", info->cfd);
+            close(info->cfd);
             break;                                            
         }
         printf("received from %s at PORT %d\n",

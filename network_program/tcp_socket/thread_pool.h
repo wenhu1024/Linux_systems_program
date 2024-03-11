@@ -97,7 +97,7 @@ ThreadPool *threadPoolCreate(int min, int max, int queueCapacity)
 
         pthread_create(&pool->managerID,NULL,manageThread,(void*)pool);
         for(int i=0;i<min;++i){
-            pthread_create(&pool->threads[i],NULL,workThread,(void*)poll);
+            pthread_create(&pool->threads[i],NULL,workThread,(void*)pool);
         }
         return pool;
     } while (0);
